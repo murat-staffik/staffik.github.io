@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staffik | Uluslararası Ticaret</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #162437;
+    --navy-light: #1E3450;
+    --gold: #C9A84C;
+    --gold-light: #E2C97A;
+    --cream: #F5F0E8;
+    --white: #FFFFFF;
+    --text-muted: #8A9BB0;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* RTL for Arabic */
+  [lang="ar"] { direction: rtl; }
+  [lang="ar"] .nav-links { flex-direction: row-reverse; }
+  [lang="ar"] .hero-badge { flex-direction: row-reverse; }
+  [lang="ar"] .contact-grid { direction: rtl; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(13,27,42,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 1.1rem; color: var(--navy);
+  }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--white); letter-spacing: 0.04em;
+  }
+  .nav-logo-sub {
+    font-size: 0.6rem; color: var(--gold); letter-spacing: 0.12em;
+    text-transform: uppercase; display: block; line-height: 1;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--text-muted);
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* Language Switcher */
+  .lang-switcher {
+    display: flex; gap: 0.4rem;
+  }
+  .lang-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-muted); font-size: 0.75rem; font-weight: 500;
+    padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 0.05em;
+    font-family: 'Inter', sans-serif;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: var(--gold); color: var(--navy);
+    border-color: var(--gold); font-weight: 600;
+  }
+  .hamburger {
+    display: none; background: none; border: none;
+    cursor: pointer; flex-direction: column; gap: 5px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white); border-radius: 2px; transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 0 5%; padding-top: 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 80%, rgba(30,52,80,0.8) 0%, transparent 50%),
+                linear-gradient(135deg, #0D1B2A 0%, #0a1520 100%);
+  }
+  .hero-grid-overlay {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: 
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(201,168,76,0.12); border: 1px solid var(--border);
+    border-radius: 100px; padding: 0.4rem 1rem;
+    font-size: 0.75rem; font-weight: 500; color: var(--gold);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero-badge-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 700; line-height: 1.15;
+    margin-bottom: 1rem;
+    color: var(--white);
+  }
+  .hero-rotator {
+    color: var(--gold);
+    display: inline-block;
+    min-width: 320px;
+    position: relative;
+  }
+  .rotator-word {
+    display: none;
+    animation: fadeSlide 0.5s ease;
+  }
+  .rotator-word.active { display: inline; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-desc {
+    font-size: 1.05rem; color: var(--text-muted);
+    line-height: 1.75; margin-bottom: 2.5rem;
+    max-width: 560px; font-weight: 300;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-weight: 600; font-size: 0.9rem;
+    padding: 0.85rem 2rem; border-radius: 6px;
+    text-decoration: none; letter-spacing: 0.03em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+  }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    font-weight: 500; font-size: 0.9rem;
+    padding: 0.85rem 2rem; border-radius: 6px;
+    text-decoration: none; letter-spacing: 0.03em;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold); color: var(--gold);
+  }
+
+  /* Bridge visual */
+  .hero-bridge {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    width: 42%; opacity: 0.18; z-index: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bridge-svg { width: 100%; }
+
+  /* Stats strip */
+  .stats-strip {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 5%;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .stat-item {
+    text-align: center; padding: 0.5rem;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--text-muted);
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-top: 0.4rem; display: block;
+  }
+
+  /* ── SECTORS ── */
+  .section {
+    padding: 6rem 5%;
+  }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700; color: var(--white);
+    margin-bottom: 1rem; line-height: 1.2;
+  }
+  .section-subtitle {
+    font-size: 1rem; color: var(--text-muted);
+    max-width: 540px; line-height: 1.7;
+  }
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .sector-card {
+    background: var(--navy-mid);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .sector-card:hover { background: var(--navy-light); }
+  .sector-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .sector-card:hover::before { opacity: 1; }
+
+  .sector-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; font-size: 1.4rem;
+  }
+  .sector-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--white); margin-bottom: 0.8rem;
+  }
+  .sector-desc {
+    font-size: 0.88rem; color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .sector-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-top: 1.2rem;
+  }
+  .tag {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.18);
+    color: var(--gold-light); font-size: 0.72rem;
+    padding: 0.25rem 0.6rem; border-radius: 4px;
+    font-weight: 500; letter-spacing: 0.03em;
+  }
+
+  /* ── ABOUT / BRIDGE ── */
+  .about-section {
+    padding: 6rem 5%;
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .about-visual {
+    position: relative;
+    height: 380px;
+  }
+  .trade-route {
+    width: 100%; height: 100%;
+    position: relative;
+  }
+  .route-svg {
+    width: 100%; height: 100%;
+  }
+
+  .values-list {
+    list-style: none; margin-top: 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .values-list li {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;
+  }
+  .value-dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; color: var(--gold); font-weight: 700;
+    margin-top: 2px;
+  }
+
+  /* ── PRODUCTS TABLE ── */
+  .products-section {
+    padding: 6rem 5%;
+  }
+  .products-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2.5rem;
+    font-size: 0.88rem;
+  }
+  .products-table th {
+    text-align: left; padding: 1rem 1.2rem;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); border-bottom: 1px solid var(--border);
+  }
+  .products-table td {
+    padding: 1.1rem 1.2rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+    vertical-align: middle;
+  }
+  .products-table tr:hover td {
+    background: rgba(201,168,76,0.03);
+    color: var(--white);
+  }
+  .product-name {
+    font-weight: 500; color: var(--white);
+    font-size: 0.92rem;
+  }
+  .product-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.1); color: var(--gold);
+    border: 1px solid var(--border);
+    font-size: 0.68rem; font-weight: 600;
+    padding: 0.2rem 0.55rem; border-radius: 3px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .product-badge.food { 
+    background: rgba(46,160,67,0.1); 
+    color: #4ade80; border-color: rgba(46,160,67,0.2);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 6rem 5%;
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; margin-top: 3rem;
+  }
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--white);
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .contact-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--border); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+  }
+  .contact-item-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+  .contact-item-text strong { color: var(--white); display: block; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-field label {
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .form-field input, .form-field select, .form-field textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 0.75rem 1rem;
+    color: var(--white); font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-field textarea { resize: vertical; min-height: 110px; }
+  .form-field select option { background: var(--navy); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080f17;
+    padding: 2.5rem 5%;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-copy span { color: var(--gold); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.78rem; color: var(--text-muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .sectors-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { height: 240px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .hero-bridge { display: none; }
+  }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">S</div>
+    <div>
+      <span class="nav-logo-text">STAFFIK</span>
+      <span class="nav-logo-sub" data-tr="Uluslararası Ticaret" data-en="International Trade" data-ar="التجارة الدولية">Uluslararası Ticaret</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#sectors" data-tr="Sektörler" data-en="Sectors" data-ar="القطاعات">Sektörler</a></li>
+    <li><a href="#about" data-tr="Hakkımızda" data-en="About" data-ar="عن الشركة">Hakkımızda</a></li>
+    <li><a href="#products" data-tr="Ürünler" data-en="Products" data-ar="المنتجات">Ürünler</a></li>
+    <li><a href="#contact" data-tr="İletişim" data-en="Contact" data-ar="اتصل بنا">İletişim</a></li>
+  </ul>
+
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+
+  <!-- Bridge SVG background -->
+  <div class="hero-bridge">
+    <svg class="bridge-svg" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 200 Q125 80 250 150 Q375 220 500 100" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
+      <circle cx="0" cy="200" r="5" fill="#C9A84C"/>
+      <circle cx="250" cy="150" r="8" fill="#C9A84C" opacity="0.6"/>
+      <circle cx="500" cy="100" r="5" fill="#C9A84C"/>
+      <text x="10" y="220" fill="#C9A84C" font-size="11" font-family="Inter" opacity="0.7">Çanakkale</text>
+      <text x="215" y="140" fill="#C9A84C" font-size="11" font-family="Inter" opacity="0.7">Dubai</text>
+      <text x="460" y="95" fill="#C9A84C" font-size="11" font-family="Inter" opacity="0.7">Shanghai</text>
+      <path d="M50 240 L450 240" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+      <path d="M50 260 L450 260" stroke="#C9A84C" stroke-width="0.3" opacity="0.12"/>
+      <rect x="80" y="230" width="30" height="10" rx="2" fill="#C9A84C" opacity="0.08"/>
+      <rect x="200" y="230" width="40" height="10" rx="2" fill="#C9A84C" opacity="0.08"/>
+      <rect x="330" y="230" width="35" height="10" rx="2" fill="#C9A84C" opacity="0.08"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span data-tr="Türkiye · Orta Doğu · Asya" data-en="Turkey · Middle East · Asia" data-ar="تركيا · الشرق الأوسط · آسيا">Türkiye · Orta Doğu · Asya</span>
+    </div>
+
+    <h1>
+      <span data-tr="Küresel pazarlara" data-en="Bridging markets" data-ar="نربط الأسواق">Küresel pazarlara</span><br>
+      <span class="hero-rotator">
+        <span class="rotator-word active"
+          data-tr-words="güvenilir köprünüz"
+          data-en-words="your trusted bridge"
+          data-ar-words="جسرك الموثوق">güvenilir köprünüz</span>
+      </span>
+    </h1>
+
+    <p class="hero-desc"
+      data-tr="Çelik ve metal ürünler, gıda & tarım hammaddeleri ve genel emtia ticaretinde Türkiye, Orta Doğu ve Asya pazarları arasında aracılık, tedarik ve ihracat hizmetleri sunuyoruz."
+      data-en="We provide intermediary, sourcing, and export services between Turkey, the Middle East, and Asian markets in steel & metal products, food & agricultural commodities, and general trade."
+      data-ar="نقدم خدمات الوساطة والتوريد والتصدير بين تركيا والشرق الأوسط والأسواق الآسيوية في منتجات الصلب والمعادن والسلع الغذائية والزراعية والتجارة العامة.">
+      Çelik ve metal ürünler, gıda & tarım hammaddeleri ve genel emtia ticaretinde Türkiye, Orta Doğu ve Asya pazarları arasında aracılık, tedarik ve ihracat hizmetleri sunuyoruz.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary"
+        data-tr="Teklif İste" data-en="Request a Quote" data-ar="طلب عرض سعر">Teklif İste</a>
+      <a href="#sectors" class="btn-outline"
+        data-tr="Ürün & Sektörler" data-en="Products & Sectors" data-ar="المنتجات والقطاعات">Ürün & Sektörler</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item reveal">
+    <span class="stat-number">20+</span>
+    <span class="stat-label" data-tr="Yıllık Deneyim" data-en="Years of Experience" data-ar="سنوات الخبرة">Yıllık Deneyim</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-number">3</span>
+    <span class="stat-label" data-tr="Kıta & Pazar" data-en="Continents & Markets" data-ar="القارات والأسواق">Kıta & Pazar</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-number">12+</span>
+    <span class="stat-label" data-tr="Aktif Tedarikçi" data-en="Active Suppliers" data-ar="الموردون النشطون">Aktif Tedarikçi</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-number">500+</span>
+    <span class="stat-label" data-tr="Tamamlanan Sipariş" data-en="Completed Orders" data-ar="الطلبات المكتملة">Tamamlanan Sipariş</span>
+  </div>
+</div>
+
+<!-- SECTORS -->
+<section class="section" id="sectors">
+  <div class="section-header reveal">
+    <p class="section-label" data-tr="Faaliyet Alanları" data-en="Business Areas" data-ar="مجالات النشاط">Faaliyet Alanları</p>
+    <h2 class="section-title" data-tr="Üç temel sektörde<br>uzmanlaşmış ticaret" data-en="Specialized trade<br>in three core sectors" data-ar="تجارة متخصصة<br>في ثلاثة قطاعات أساسية">Üç temel sektörde<br>uzmanlaşmış ticaret</h2>
+    <p class="section-subtitle" data-tr="Doğrudan fabrika bağlantıları, rekabetçi fiyatlar ve güvenilir lojistik zinciri ile küresel tedariki kolaylaştırıyoruz." data-en="We facilitate global sourcing with direct factory connections, competitive pricing, and reliable logistics chains." data-ar="نسهل التوريد العالمي من خلال روابط مباشرة بالمصانع وأسعار تنافسية وسلاسل لوجستية موثوقة.">Doğrudan fabrika bağlantıları, rekabetçi fiyatlar ve güvenilir lojistik zinciri ile küresel tedariki kolaylaştırıyoruz.</p>
+  </div>
+
+  <div class="sectors-grid reveal">
+    <!-- Steel -->
+    <div class="sector-card">
+      <div class="sector-icon">⚙️</div>
+      <h3 class="sector-title" data-tr="Çelik & Metal Ürünler" data-en="Steel & Metal Products" data-ar="منتجات الصلب والمعادن">Çelik & Metal Ürünler</h3>
+      <p class="sector-desc" data-tr="Çin kaynaklı yüksek mukavemetli çelik plakalar, kangal ve profiller. NM450 aşınmaya dayanıklı plakalar ve S700MC yüksek mukavemetli saclar başta olmak üzere endüstriyel çelik tedariki." data-en="China-sourced high-strength steel plates, coils, and profiles. Industrial steel supply with a focus on NM450 wear-resistant plates and S700MC high-strength coils." data-ar="ألواح صلب عالية المقاومة من مصادر صينية، ملفات وملفات. توريد فولاذ صناعي مع التركيز على ألواح NM450 المقاومة للتآكل وملفات S700MC عالية المقاومة.">Çin kaynaklı yüksek mukavemetli çelik plakalar, kangal ve profiller. NM450 aşınmaya dayanıklı plakalar ve S700MC yüksek mukavemetli saclar başta olmak üzere endüstriyel çelik tedariki.</p>
+      <div class="sector-tags">
+        <span class="tag">NM450</span>
+        <span class="tag">S700MC</span>
+        <span class="tag">HR Coil</span>
+        <span class="tag">Wear Plate</span>
+      </div>
+    </div>
+    <!-- Food -->
+    <div class="sector-card">
+      <div class="sector-icon">🌾</div>
+      <h3 class="sector-title" data-tr="Gıda & Tarım Ürünleri" data-en="Food & Agricultural Products" data-ar="المنتجات الغذائية والزراعية">Gıda & Tarım Ürünleri</h3>
+      <p class="sector-desc" data-tr="Türk tarım ürünleri ve gıda hammaddelerinin ihracatı. Zeytinyağı, tahıl, bakliyat ve taze ürünlerde Orta Doğu ve Kuzey Afrika pazarlarına tedarik zinciri yönetimi." data-en="Export of Turkish agricultural products and food raw materials. Supply chain management for olive oil, grains, legumes, and fresh produce to Middle East and North Africa markets." data-ar="تصدير المنتجات الزراعية التركية والمواد الخام الغذائية. إدارة سلسلة توريد زيت الزيتون والحبوب والبقوليات والمنتجات الطازجة إلى أسواق الشرق الأوسط وشمال أفريقيا.">Türk tarım ürünleri ve gıda hammaddelerinin ihracatı. Zeytinyağı, tahıl, bakliyat ve taze ürünlerde Orta Doğu ve Kuzey Afrika pazarlarına tedarik zinciri yönetimi.</p>
+      <div class="sector-tags">
+        <span class="tag food">Zeytinyağı</span>
+        <span class="tag food">Tahıl</span>
+        <span class="tag food">Bakliyat</span>
+        <span class="tag food">MENA</span>
+      </div>
+    </div>
+    <!-- General -->
+    <div class="sector-card">
+      <div class="sector-icon">🔗</div>
+      <h3 class="sector-title" data-tr="Genel Ticaret & Aracılık" data-en="General Trade & Intermediary" data-ar="التجارة العامة والوساطة">Genel Ticaret & Aracılık</h3>
+      <p class="sector-desc" data-tr="İthalat/ihracat süreçlerinde tam kapsamlı aracılık: tedarikçi bulma, fiyat müzakereleri, lojistik koordinasyonu ve gümrük danışmanlığı. B2B bağlantı hizmetleri." data-en="Full-scope intermediary services for import/export processes: sourcing, price negotiations, logistics coordination, and customs advisory. B2B connection services." data-ar="خدمات وساطة شاملة لعمليات الاستيراد والتصدير: التوريد والتفاوض على الأسعار وتنسيق الخدمات اللوجستية والاستشارات الجمركية. خدمات التواصل B2B.">İthalat/ihracat süreçlerinde tam kapsamlı aracılık: tedarikçi bulma, fiyat müzakereleri, lojistik koordinasyonu ve gümrük danışmanlığı. B2B bağlantı hizmetleri.</p>
+      <div class="sector-tags">
+        <span class="tag">İthalat</span>
+        <span class="tag">İhracat</span>
+        <span class="tag">B2B</span>
+        <span class="tag">Lojistik</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="section-label" data-tr="Hakkımızda" data-en="About Us" data-ar="عن الشركة">Hakkımızda</p>
+      <h2 class="section-title" data-tr="Çanakkale'den dünyaya uzanan ticaret ağı" data-en="A trade network reaching the world from Çanakkale" data-ar="شبكة تجارية تمتد من جناق قلعة إلى العالم">Çanakkale'den dünyaya uzanan ticaret ağı</h2>
+      <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.8;margin-top:1rem;"
+        data-tr="2004'ten bu yana sahada edindiğimiz tecrübeyi uluslararası ticaretin dinamikleriyle birleştiriyoruz. Türkiye'nin stratejik konumunu köprü olarak kullanarak Asya üreticileri ile Orta Doğu ve Avrupa alıcıları arasında güvenilir bağlantılar kuruyoruz."
+        data-en="Since 2004, we have combined our field experience with the dynamics of international trade. Using Turkey's strategic position as a bridge, we build reliable connections between Asian manufacturers and Middle Eastern and European buyers."
+        data-ar="منذ عام 2004، نجمع خبرتنا الميدانية مع ديناميكيات التجارة الدولية. باستخدام الموقع الاستراتيجي لتركيا كجسر، نبني روابط موثوقة بين المصنعين الآسيويين والمشترين في الشرق الأوسط وأوروبا.">
+        2004'ten bu yana sahada edindiğimiz tecrübeyi uluslararası ticaretin dinamikleriyle birleştiriyoruz. Türkiye'nin stratejik konumunu köprü olarak kullanarak Asya üreticileri ile Orta Doğu ve Avrupa alıcıları arasında güvenilir bağlantılar kuruyoruz.
+      </p>
+      <ul class="values-list">
+        <li>
+          <span class="value-dot">✓</span>
+          <span data-tr="Doğrudan fabrika bağlantıları ile rekabetçi CIF/FOB fiyatlandırma" data-en="Competitive CIF/FOB pricing with direct factory connections" data-ar="أسعار CIF/FOB تنافسية مع روابط مباشرة بالمصانع">Doğrudan fabrika bağlantıları ile rekabetçi CIF/FOB fiyatlandırma</span>
+        </li>
+        <li>
+          <span class="value-dot">✓</span>
+          <span data-tr="Gümrük, lojistik ve belgelendirme süreçlerinde uçtan uca destek" data-en="End-to-end support in customs, logistics, and documentation processes" data-ar="دعم شامل في عمليات الجمارك والخدمات اللوجستية والتوثيق">Gümrük, lojistik ve belgelendirme süreçlerinde uçtan uca destek</span>
+        </li>
+        <li>
+          <span class="value-dot">✓</span>
+          <span data-tr="Türkçe, İngilizce ve Arapça'da yerli dil desteği" data-en="Native language support in Turkish, English, and Arabic" data-ar="دعم باللغات التركية والإنجليزية والعربية">Türkçe, İngilizce ve Arapça'da yerli dil desteği</span>
+        </li>
+        <li>
+          <span class="value-dot">✓</span>
+          <span data-tr="LC, TT ve akreditif işlemlerinde deneyimli ödeme yönetimi" data-en="Experienced payment management in LC, TT, and letter of credit transactions" data-ar="إدارة مدفوعات متمرسة في معاملات LC وTT وخطابات الاعتماد">LC, TT ve akreditif işlemlerinde deneyimli ödeme yönetimi</span>
+        </li>
+      </ul>
+    </div>
+    <div class="about-visual reveal">
+      <svg class="route-svg" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- World silhouette simplified -->
+        <rect width="420" height="340" rx="12" fill="rgba(22,36,55,0.6)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+        <!-- Grid lines -->
+        <line x1="0" y1="85" x2="420" y2="85" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+        <line x1="0" y1="170" x2="420" y2="170" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+        <line x1="0" y1="255" x2="420" y2="255" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+        <line x1="105" y1="0" x2="105" y2="340" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+        <line x1="210" y1="0" x2="210" y2="340" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+        <line x1="315" y1="0" x2="315" y2="340" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+
+        <!-- Trade route curve: Çanakkale → Dubai → Shanghai -->
+        <path d="M110 155 Q200 80 280 130 Q340 160 380 110" stroke="#C9A84C" stroke-width="2" fill="none" stroke-dasharray="8,5" opacity="0.8"/>
+
+        <!-- Çanakkale node -->
+        <circle cx="110" cy="155" r="10" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="110" cy="155" r="4" fill="#C9A84C"/>
+        <text x="88" y="178" fill="#C9A84C" font-size="10" font-family="Inter" font-weight="600">Çanakkale</text>
+        <text x="94" y="190" fill="rgba(201,168,76,0.5)" font-size="9" font-family="Inter">Türkiye</text>
+
+        <!-- Dubai node -->
+        <circle cx="280" cy="130" r="10" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="280" cy="130" r="4" fill="#C9A84C"/>
+        <text x="260" y="153" fill="#C9A84C" font-size="10" font-family="Inter" font-weight="600">Dubai</text>
+        <text x="258" y="165" fill="rgba(201,168,76,0.5)" font-size="9" font-family="Inter">B.A.E.</text>
+
+        <!-- Shanghai node -->
+        <circle cx="380" cy="110" r="10" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="380" cy="110" r="4" fill="#C9A84C"/>
+        <text x="355" y="133" fill="#C9A84C" font-size="10" font-family="Inter" font-weight="600">Shanghai</text>
+        <text x="363" y="145" fill="rgba(201,168,76,0.5)" font-size="9" font-family="Inter">Çin</text>
+
+        <!-- Secondary route: Çanakkale → Cairo -->
+        <path d="M110 155 Q145 210 190 220" stroke="#C9A84C" stroke-width="1" fill="none" stroke-dasharray="4,4" opacity="0.4"/>
+        <circle cx="190" cy="220" r="5" fill="rgba(201,168,76,0.3)" stroke="#C9A84C" stroke-width="1"/>
+        <text x="170" y="240" fill="rgba(201,168,76,0.5)" font-size="9" font-family="Inter">Kahire</text>
+
+        <!-- Label -->
+        <text x="20" y="310" fill="rgba(201,168,76,0.3)" font-size="9" font-family="Inter" letter-spacing="2">STAFFIK TRADE NETWORK</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="section-header reveal">
+    <p class="section-label" data-tr="Ürün Kataloğu" data-en="Product Catalog" data-ar="كتالوج المنتجات">Ürün Kataloğu</p>
+    <h2 class="section-title" data-tr="Tedarik ettiğimiz başlıca ürünler" data-en="Key products we source" data-ar="المنتجات الرئيسية التي نوردها">Tedarik ettiğimiz başlıca ürünler</h2>
+  </div>
+
+  <table class="products-table reveal">
+    <thead>
+      <tr>
+        <th data-tr="Ürün Adı" data-en="Product Name" data-ar="اسم المنتج">Ürün Adı</th>
+        <th data-tr="Kategori" data-en="Category" data-ar="الفئة">Kategori</th>
+        <th data-tr="Menşei" data-en="Origin" data-ar="المنشأ">Menşei</th>
+        <th data-tr="Hedef Pazar" data-en="Target Market" data-ar="السوق المستهدف">Hedef Pazar</th>
+        <th data-tr="Teslim" data-en="Delivery" data-ar="التسليم">Teslim</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="product-name">NM450 Wear-Resistant Plate</span></td>
+        <td><span class="product-badge" data-tr="Çelik" data-en="Steel" data-ar="صلب">Çelik</span></td>
+        <td data-tr="Çin" data-en="China" data-ar="الصين">Çin</td>
+        <td data-tr="Türkiye / MENA" data-en="Turkey / MENA" data-ar="تركيا / منطقة الشرق الأوسط">Türkiye / MENA</td>
+        <td>CIF / FOB</td>
+      </tr>
+      <tr>
+        <td><span class="product-name">S700MC High-Strength Coil</span></td>
+        <td><span class="product-badge" data-tr="Çelik" data-en="Steel" data-ar="صلب">Çelik</span></td>
+        <td data-tr="Çin" data-en="China" data-ar="الصين">Çin</td>
+        <td data-tr="Türkiye / AB" data-en="Turkey / EU" data-ar="تركيا / الاتحاد الأوروبي">Türkiye / AB</td>
+        <td>CIF / CFR</td>
+      </tr>
+      <tr>
+        <td><span class="product-name">Hot-Rolled Coil (HRC)</span></td>
+        <td><span class="product-badge" data-tr="Çelik" data-en="Steel" data-ar="صلب">Çelik</span></td>
+        <td data-tr="Çin / Türkiye" data-en="China / Turkey" data-ar="الصين / تركيا">Çin / Türkiye</td>
+        <td data-tr="Orta Doğu" data-en="Middle East" data-ar="الشرق الأوسط">Orta Doğu</td>
+        <td>FOB</td>
+      </tr>
+      <tr>
+        <td><span class="product-name" data-tr="Zeytinyağı (Sızma / Rafine)" data-en="Olive Oil (Extra Virgin / Refined)" data-ar="زيت الزيتون (بكر ممتاز / مكرر)">Zeytinyağı (Sızma / Rafine)</span></td>
+        <td><span class="product-badge food" data-tr="Gıda" data-en="Food" data-ar="غذاء">Gıda</span></td>
+        <td data-tr="Türkiye (Çanakkale)" data-en="Turkey (Çanakkale)" data-ar="تركيا (جناق قلعة)">Türkiye (Çanakkale)</td>
+        <td data-tr="MENA / KÖrfez" data-en="MENA / Gulf" data-ar="منطقة الشرق الأوسط / الخليج">MENA / Körfez</td>
+        <td>DAP / CIF</td>
+      </tr>
+      <tr>
+        <td><span class="product-name" data-tr="Tahıl & Bakliyat" data-en="Grain & Legumes" data-ar="الحبوب والبقوليات">Tahıl & Bakliyat</span></td>
+        <td><span class="product-badge food" data-tr="Gıda" data-en="Food" data-ar="غذاء">Gıda</span></td>
+        <td data-tr="Türkiye" data-en="Turkey" data-ar="تركيا">Türkiye</td>
+        <td data-tr="Kuzey Afrika / MENA" data-en="North Africa / MENA" data-ar="شمال أفريقيا / الشرق الأوسط">Kuzey Afrika / MENA</td>
+        <td>CFR / CIF</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;padding-left:0.5rem;" 
+    data-tr="* Listelenenler dışındaki ürünler için özel teklif talebi oluşturabilirsiniz."
+    data-en="* You can submit a custom quote request for products not listed above."
+    data-ar="* يمكنك تقديم طلب عرض سعر مخصص للمنتجات غير المدرجة أعلاه.">
+    * Listelenenler dışındaki ürünler için özel teklif talebi oluşturabilirsiniz.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-header reveal">
+    <p class="section-label" data-tr="İletişim" data-en="Contact" data-ar="اتصل بنا">İletişim</p>
+    <h2 class="section-title" data-tr="Bizimle çalışmaya başlayın" data-en="Start working with us" data-ar="ابدأ العمل معنا">Bizimle çalışmaya başlayın</h2>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3 data-tr="İletişim Bilgileri" data-en="Contact Information" data-ar="معلومات الاتصال">İletişim Bilgileri</h3>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-text">
+            <strong data-tr="Adres" data-en="Address" data-ar="العنوان">Adres</strong>
+            Kemalpaşa Mah. Küçük Hamam Sok.<br>Selahi Aksoy Pasajı No:62<br>Merkez / Çanakkale, Türkiye
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-item-text">
+            <strong data-tr="Telefon" data-en="Phone" data-ar="الهاتف">Telefon</strong>
+            +90 507 083 6586
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-item-text">
+            <strong data-tr="E-posta" data-en="E-mail" data-ar="البريد الإلكتروني">E-posta</strong>
+            muhasebe@staffik.com.tr
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div class="contact-item-text">
+            <strong data-tr="Diller" data-en="Languages" data-ar="اللغات">Diller</strong>
+            <span data-tr="Türkçe · İngilizce · Arapça" data-en="Turkish · English · Arabic" data-ar="التركية · الإنجليزية · العربية">Türkçe · İngilizce · Arapça</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-field">
+          <label data-tr="Ad Soyad" data-en="Full Name" data-ar="الاسم الكامل">Ad Soyad</label>
+          <input type="text" id="f-name" placeholder="...">
+        </div>
+        <div class="form-field">
+          <label data-tr="Şirket" data-en="Company" data-ar="الشركة">Şirket</label>
+          <input type="text" id="f-company" placeholder="...">
+        </div>
+      </div>
+      <div class="form-field">
+        <label data-tr="E-posta" data-en="E-mail" data-ar="البريد الإلكتروني">E-posta</label>
+        <input type="email" id="f-email" placeholder="...">
+      </div>
+      <div class="form-field">
+        <label data-tr="İlgilendiğiniz Sektör" data-en="Sector of Interest" data-ar="القطاع المهتم به">İlgilendiğiniz Sektör</label>
+        <select id="f-sector">
+          <option value="" data-tr="Seçiniz..." data-en="Select..." data-ar="اختر...">Seçiniz...</option>
+          <option value="steel" data-tr="Çelik & Metal" data-en="Steel & Metal" data-ar="الصلب والمعادن">Çelik & Metal</option>
+          <option value="food" data-tr="Gıda & Tarım" data-en="Food & Agriculture" data-ar="الغذاء والزراعة">Gıda & Tarım</option>
+          <option value="general" data-tr="Genel Ticaret" data-en="General Trade" data-ar="التجارة العامة">Genel Ticaret</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label data-tr="Mesajınız" data-en="Your Message" data-ar="رسالتك">Mesajınız</label>
+        <textarea id="f-message" placeholder="..."></textarea>
+      </div>
+      <button class="btn-primary" style="align-self:flex-start" onclick="submitForm()"
+        data-tr="Gönder" data-en="Send Message" data-ar="إرسال الرسالة">Gönder</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">
+    © 2025 <span>Staffik</span> — <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">Tüm hakları saklıdır.</span>
+  </div>
+  <div class="footer-links">
+    <a href="#" data-tr="Kullanım Koşulları" data-en="Terms of Use" data-ar="شروط الاستخدام">Kullanım Koşulları</a>
+    <a href="#" data-tr="Gizlilik" data-en="Privacy" data-ar="الخصوصية">Gizlilik</a>
+  </div>
+</footer>
+
+<script>
+  // ── Language System ──
+  let currentLang = 'tr';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    // Update all data-{lang} elements
+    document.querySelectorAll('[data-tr]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val) el.innerHTML = val;
+    });
+
+    // Update rotator word
+    const word = document.querySelector('.rotator-word');
+    if (word) {
+      const words = word.getAttribute('data-' + lang + '-words');
+      if (words) word.textContent = words;
+    }
+
+    // Update lang buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    });
+
+    // Update select options
+    document.querySelectorAll('select option').forEach(opt => {
+      const val = opt.getAttribute('data-' + lang);
+      if (val) opt.textContent = val;
+    });
+
+    // Update placeholders
+    const placeholderMap = {
+      tr: { name: 'Adınız Soyadınız', company: 'Şirket adı', email: 'ornek@sirket.com', msg: 'Teklif almak istediğiniz ürün ve miktar...' },
+      en: { name: 'Your Full Name', company: 'Company name', email: 'example@company.com', msg: 'Product and quantity you would like to inquire about...' },
+      ar: { name: 'اسمك الكامل', company: 'اسم الشركة', email: 'example@company.com', msg: 'المنتج والكمية التي تود الاستفسار عنها...' }
+    };
+    const p = placeholderMap[lang];
+    const fn = document.getElementById('f-name'); if (fn) fn.placeholder = p.name;
+    const fc = document.getElementById('f-company'); if (fc) fc.placeholder = p.company;
+    const fe = document.getElementById('f-email'); if (fe) fe.placeholder = p.email;
+    const fm = document.getElementById('f-message'); if (fm) fm.placeholder = p.msg;
+  }
+
+  // ── Scroll Reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav scroll effect ──
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.background = window.scrollY > 50
+      ? 'rgba(13,27,42,0.98)' : 'rgba(13,27,42,0.92)';
+  });
+
+  // ── Mobile menu ──
+  let menuOpen = false;
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    const links = document.querySelector('.nav-links');
+    if (menuOpen) {
+      links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(13,27,42,0.98);padding:1.5rem 5%;gap:1.2rem;border-bottom:1px solid rgba(201,168,76,0.2);z-index:99;';
+    } else {
+      links.style.cssText = 'display:none;';
+    }
+  }
+
+  // ── Form submit ──
+  function submitForm() {
+    const msgs = {
+      tr: 'Teşekkürler! Mesajınız iletildi. En kısa sürede geri dönüş yapacağız.',
+      en: 'Thank you! Your message has been sent. We will get back to you shortly.',
+      ar: 'شكراً! تم إرسال رسالتك. سنعود إليك في أقرب وقت ممكن.'
+    };
+    alert(msgs[currentLang] || msgs.tr);
+  }
+
+  // ── Init ──
+  setLang('tr');
+</script>
+</body>
+</html>
