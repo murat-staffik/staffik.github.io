@@ -254,7 +254,7 @@
 
   .sectors-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -383,9 +383,14 @@
     padding: 0.2rem 0.55rem; border-radius: 3px;
     letter-spacing: 0.05em; text-transform: uppercase;
   }
-  .product-badge.food { 
-    background: rgba(46,160,67,0.1); 
-    color: #4ade80; border-color: rgba(46,160,67,0.2);
+  .product-badge.troya { 
+    background: rgba(34,197,94,0.1); 
+    color: #86efac; border-color: rgba(34,197,94,0.2);
+  }
+  .tag.troya {
+    background: rgba(34,197,94,0.08);
+    border-color: rgba(34,197,94,0.2);
+    color: #86efac;
   }
 
   /* ── CONTACT ── */
@@ -459,7 +464,7 @@
   @media (max-width: 900px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .sectors-grid { grid-template-columns: 1fr; }
+    .sectors-grid { grid-template-columns: 1fr 1fr; }
     .about-grid { grid-template-columns: 1fr; }
     .about-visual { height: 240px; }
     .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -544,10 +549,10 @@
     </h1>
 
     <p class="hero-desc"
-      data-tr="Çelik ve metal ürünler, gıda & tarım hammaddeleri ve genel emtia ticaretinde Türkiye, Orta Doğu ve Asya pazarları arasında aracılık, tedarik ve ihracat hizmetleri sunuyoruz."
-      data-en="We provide intermediary, sourcing, and export services between Turkey, the Middle East, and Asian markets in steel & metal products, food & agricultural commodities, and general trade."
-      data-ar="نقدم خدمات الوساطة والتوريد والتصدير بين تركيا والشرق الأوسط والأسواق الآسيوية في منتجات الصلب والمعادن والسلع الغذائية والزراعية والتجارة العامة.">
-      Çelik ve metal ürünler, gıda & tarım hammaddeleri ve genel emtia ticaretinde Türkiye, Orta Doğu ve Asya pazarları arasında aracılık, tedarik ve ihracat hizmetleri sunuyoruz.
+      data-tr="Çelik ve metal ürünler, gıda & tarım hammaddeleri ve TroyaFoods markamız altında taze & vakumlu sebze işlemede Türkiye, Orta Doğu ve Asya pazarları arasında aracılık, tedarik ve ihracat hizmetleri sunuyoruz."
+      data-en="We provide intermediary, sourcing, and export services between Turkey, the Middle East, and Asian markets in steel & metal products, food & agricultural commodities, and fresh & vacuum-packed vegetables under our TroyaFoods brand."
+      data-ar="نقدم خدمات الوساطة والتوريد والتصدير بين تركيا والشرق الأوسط والأسواق الآسيوية في منتجات الصلب والمعادن والسلع الغذائية والزراعية والخضروات الطازجة والمعبأة بالتفريغ تحت علامتنا التجارية TroyaFoods.">
+      Çelik ve metal ürünler, gıda & tarım hammaddeleri ve TroyaFoods markamız altında taze & vakumlu sebze işlemede Türkiye, Orta Doğu ve Asya pazarları arasında aracılık, tedarik ve ihracat hizmetleri sunuyoruz.
     </p>
 
     <div class="hero-actions">
@@ -583,7 +588,7 @@
 <section class="section" id="sectors">
   <div class="section-header reveal">
     <p class="section-label" data-tr="Faaliyet Alanları" data-en="Business Areas" data-ar="مجالات النشاط">Faaliyet Alanları</p>
-    <h2 class="section-title" data-tr="Üç temel sektörde<br>uzmanlaşmış ticaret" data-en="Specialized trade<br>in three core sectors" data-ar="تجارة متخصصة<br>في ثلاثة قطاعات أساسية">Üç temel sektörde<br>uzmanlaşmış ticaret</h2>
+    <h2 class="section-title" data-tr="Dört temel alanda<br>uzmanlaşmış ticaret & üretim" data-en="Specialized trade & production<br>in four core areas" data-ar="تجارة وإنتاج متخصص<br>في أربعة مجالات أساسية">Dört temel alanda<br>uzmanlaşmış ticaret & üretim</h2>
     <p class="section-subtitle" data-tr="Doğrudan fabrika bağlantıları, rekabetçi fiyatlar ve güvenilir lojistik zinciri ile küresel tedariki kolaylaştırıyoruz." data-en="We facilitate global sourcing with direct factory connections, competitive pricing, and reliable logistics chains." data-ar="نسهل التوريد العالمي من خلال روابط مباشرة بالمصانع وأسعار تنافسية وسلاسل لوجستية موثوقة.">Doğrudan fabrika bağlantıları, rekabetçi fiyatlar ve güvenilir lojistik zinciri ile küresel tedariki kolaylaştırıyoruz.</p>
   </div>
 
@@ -624,6 +629,18 @@
         <span class="tag">Lojistik</span>
       </div>
     </div>
+    <!-- TroyaFoods -->
+    <div class="sector-card">
+      <div class="sector-icon">🥦</div>
+      <h3 class="sector-title" data-tr="TroyaFoods — Taze & Vakumlu Sebze" data-en="TroyaFoods — Fresh & Vacuum-Packed Vegetables" data-ar="TroyaFoods — خضروات طازجة ومعبأة بالتفريغ">TroyaFoods — Taze & Vakumlu Sebze</h3>
+      <p class="sector-desc" data-tr="Çanakkale merkezli işleme tesisimizde taze kesilmiş, paketlenmiş ve vakumlu sebze üretimi. Market raflarına, catering firmalarına ve ihracat pazarına yönelik katma değerli ürünler." data-en="Fresh-cut, packaged, and vacuum-packed vegetable production at our Çanakkale-based processing facility. Value-added products for retail shelves, catering companies, and export markets." data-ar="إنتاج خضروات مقطعة طازجة ومعبأة ومعبأة بالتفريغ في منشأة معالجتنا في جناق قلعة. منتجات ذات قيمة مضافة لرفوف البيع بالتجزئة وشركات تقديم الطعام وأسواق التصدير.">Çanakkale merkezli işleme tesisimizde taze kesilmiş, paketlenmiş ve vakumlu sebze üretimi. Market raflarına, catering firmalarına ve ihracat pazarına yönelik katma değerli ürünler.</p>
+      <div class="sector-tags">
+        <span class="tag troya">Taze Kesim</span>
+        <span class="tag troya">Vakumlu</span>
+        <span class="tag troya">Paketleme</span>
+        <span class="tag troya">İhracat</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -634,10 +651,10 @@
       <p class="section-label" data-tr="Hakkımızda" data-en="About Us" data-ar="عن الشركة">Hakkımızda</p>
       <h2 class="section-title" data-tr="Çanakkale'den dünyaya uzanan ticaret ağı" data-en="A trade network reaching the world from Çanakkale" data-ar="شبكة تجارية تمتد من جناق قلعة إلى العالم">Çanakkale'den dünyaya uzanan ticaret ağı</h2>
       <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.8;margin-top:1rem;"
-        data-tr="2004'ten bu yana sahada edindiğimiz tecrübeyi uluslararası ticaretin dinamikleriyle birleştiriyoruz. Türkiye'nin stratejik konumunu köprü olarak kullanarak Asya üreticileri ile Orta Doğu ve Avrupa alıcıları arasında güvenilir bağlantılar kuruyoruz."
-        data-en="Since 2004, we have combined our field experience with the dynamics of international trade. Using Turkey's strategic position as a bridge, we build reliable connections between Asian manufacturers and Middle Eastern and European buyers."
-        data-ar="منذ عام 2004، نجمع خبرتنا الميدانية مع ديناميكيات التجارة الدولية. باستخدام الموقع الاستراتيجي لتركيا كجسر، نبني روابط موثوقة بين المصنعين الآسيويين والمشترين في الشرق الأوسط وأوروبا.">
-        2004'ten bu yana sahada edindiğimiz tecrübeyi uluslararası ticaretin dinamikleriyle birleştiriyoruz. Türkiye'nin stratejik konumunu köprü olarak kullanarak Asya üreticileri ile Orta Doğu ve Avrupa alıcıları arasında güvenilir bağlantılar kuruyoruz.
+        data-tr="2004'ten bu yana sahada edindiğimiz tecrübeyi uluslararası ticaretin dinamikleriyle birleştiriyoruz. Türkiye'nin stratejik konumunu köprü olarak kullanarak Asya üreticileri ile Orta Doğu ve Avrupa alıcıları arasında güvenilir bağlantılar kuruyoruz. TroyaFoods markamız altında ise Çanakkale merkezli işleme tesisimizde taze kesilmiş ve vakumlu paketli sebze üretimi gerçekleştiriyoruz."
+        data-en="Since 2004, we have combined our field experience with the dynamics of international trade. Using Turkey's strategic position as a bridge, we build reliable connections between Asian manufacturers and Middle Eastern and European buyers. Under our TroyaFoods brand, we produce fresh-cut and vacuum-packed vegetables at our Çanakkale-based processing facility."
+        data-ar="منذ عام 2004، نجمع خبرتنا الميدانية مع ديناميكيات التجارة الدولية. باستخدام الموقع الاستراتيجي لتركيا كجسر، نبني روابط موثوقة بين المصنعين الآسيويين والمشترين في الشرق الأوسط وأوروبا. وتحت علامة TroyaFoods التجارية، ننتج خضروات مقطعة طازجة ومعبأة بالتفريغ في منشأتنا في جناق قلعة.">
+        2004'ten bu yana sahada edindiğimiz tecrübeyi uluslararası ticaretin dinamikleriyle birleştiriyoruz. Türkiye'nin stratejik konumunu köprü olarak kullanarak Asya üreticileri ile Orta Doğu ve Avrupa alıcıları arasında güvenilir bağlantılar kuruyoruz. TroyaFoods markamız altında ise Çanakkale merkezli işleme tesisimizde taze kesilmiş ve vakumlu paketli sebze üretimi gerçekleştiriyoruz.
       </p>
       <ul class="values-list">
         <li>
@@ -655,6 +672,10 @@
         <li>
           <span class="value-dot">✓</span>
           <span data-tr="LC, TT ve akreditif işlemlerinde deneyimli ödeme yönetimi" data-en="Experienced payment management in LC, TT, and letter of credit transactions" data-ar="إدارة مدفوعات متمرسة في معاملات LC وTT وخطابات الاعتماد">LC, TT ve akreditif işlemlerinde deneyimli ödeme yönetimi</span>
+        </li>
+        <li>
+          <span class="value-dot">✓</span>
+          <span data-tr="TroyaFoods: Çanakkale'de taze kesim & vakumlu sebze üretim altyapısı" data-en="TroyaFoods: Fresh-cut & vacuum-pack vegetable production infrastructure in Çanakkale" data-ar="TroyaFoods: بنية تحتية لإنتاج الخضروات المقطعة الطازجة والمعبأة بالتفريغ في جناق قلعة">TroyaFoods: Çanakkale'de taze kesim & vakumlu sebze üretim altyapısı</span>
         </li>
       </ul>
     </div>
@@ -756,6 +777,20 @@
         <td data-tr="Kuzey Afrika / MENA" data-en="North Africa / MENA" data-ar="شمال أفريقيا / الشرق الأوسط">Kuzey Afrika / MENA</td>
         <td>CFR / CIF</td>
       </tr>
+      <tr>
+        <td><span class="product-name" data-tr="Taze Kesilmiş Sebzeler (TroyaFoods)" data-en="Fresh-Cut Vegetables (TroyaFoods)" data-ar="خضروات مقطعة طازجة (TroyaFoods)">Taze Kesilmiş Sebzeler (TroyaFoods)</span></td>
+        <td><span class="product-badge troya" data-tr="TroyaFoods" data-en="TroyaFoods" data-ar="TroyaFoods">TroyaFoods</span></td>
+        <td data-tr="Türkiye (Çanakkale)" data-en="Turkey (Çanakkale)" data-ar="تركيا (جناق قلعة)">Türkiye (Çanakkale)</td>
+        <td data-tr="Yurt İçi / MENA" data-en="Domestic / MENA" data-ar="محلي / الشرق الأوسط">Yurt İçi / MENA</td>
+        <td>DAP / EXW</td>
+      </tr>
+      <tr>
+        <td><span class="product-name" data-tr="Vakumlu Paketli Sebzeler (TroyaFoods)" data-en="Vacuum-Packed Vegetables (TroyaFoods)" data-ar="خضروات معبأة بالتفريغ (TroyaFoods)">Vakumlu Paketli Sebzeler (TroyaFoods)</span></td>
+        <td><span class="product-badge troya" data-tr="TroyaFoods" data-en="TroyaFoods" data-ar="TroyaFoods">TroyaFoods</span></td>
+        <td data-tr="Türkiye (Çanakkale)" data-en="Turkey (Çanakkale)" data-ar="تركيا (جناق قلعة)">Türkiye (Çanakkale)</td>
+        <td data-tr="Süpermarketler / Catering / İhracat" data-en="Supermarkets / Catering / Export" data-ar="سوبر ماركت / تموين / تصدير">Süpermarketler / Catering / İhracat</td>
+        <td>DAP / CIF</td>
+      </tr>
     </tbody>
   </table>
   <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;padding-left:0.5rem;" 
@@ -829,6 +864,7 @@
           <option value="" data-tr="Seçiniz..." data-en="Select..." data-ar="اختر...">Seçiniz...</option>
           <option value="steel" data-tr="Çelik & Metal" data-en="Steel & Metal" data-ar="الصلب والمعادن">Çelik & Metal</option>
           <option value="food" data-tr="Gıda & Tarım" data-en="Food & Agriculture" data-ar="الغذاء والزراعة">Gıda & Tarım</option>
+          <option value="troya" data-tr="TroyaFoods — Taze & Vakumlu Sebze" data-en="TroyaFoods — Fresh & Vacuum-Packed Veg" data-ar="TroyaFoods — خضروات طازجة ومعبأة">TroyaFoods — Taze & Vakumlu Sebze</option>
           <option value="general" data-tr="Genel Ticaret" data-en="General Trade" data-ar="التجارة العامة">Genel Ticaret</option>
         </select>
       </div>
